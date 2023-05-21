@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to Images</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #FFA500;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+            color: rgb(56, 97, 108);
+        }
+
+        .form-container input[type="text"] {
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 10px 20px;
+        }
+
+        .download-link {
+            margin-top: 20px;
+        }
+        .link-div {
+            background-color: rgb(242, 242, 15);
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+        }
+        .link-div a {
+            color: #00539f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .home-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="link-div home-link">
+        <a href="/">Trang chủ</a>
+    </div>
+    <h1>Text to Images</h1>
+    <div class="form-container">
+        <form method="post" action="/text_to_images">
+            <label for="text">Input:</label>
+            <input type="text" name="text" value="Make a cute cat"><br><br>
+            
+            <input type="submit" value="Create new Images" style="margin-bottom: 2cm;">
+        </form>
+    </div>
+    {% if errors %}
+        <div class="error-message">
+            {{ errors }}
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="success-message">
+            Images created successfully!
+        </div>
+        <div class="download-link">
+            <a href="/download_images2" download>Download Images</a>
+        </div>
+    {% endif %}
+</body>
+</html>

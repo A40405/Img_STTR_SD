@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My App</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: rgba(11, 189, 234, 0.908);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .info-container #info {
+            margin-left: 4%;
+            width: 120%;
+        }
+
+        .info-container p {
+            font-size: 20px;
+        }
+
+        .app-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-links .link-div {
+            background-color: white;
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .app-links .link-div a {
+            color: #00539f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-container">
+            <div>
+                <p style="margin-bottom: 5px; margin-top: -30px;">Trường đại học Thăng Long</p>
+                <p style="margin-bottom: 1.2cm; margin-top: 5px;">Sản phẩm nghiên cứu sinh viên</p>
+            </div>
+            <div id="info" style="text-align: left; margin-left: 4%;">
+                <h2 style="text-align: left; margin-top: 0; margin-bottom: 3px;">Người thực hiện:</h2>
+                <h4 style="text-align: left; margin-top: 0; margin-bottom: 5px;">A40405 Bùi Hữu Huấn</h4>
+                <h2 style="text-align: left; margin-top: 0; margin-bottom: 3px;">Giảng viên hướng dẫn:</h2>
+                <h4 style="text-align: left; margin-top: 0; margin-bottom: 3px;">PAI001 Nguyễn Thị Huyền Châu</h4>
+                <h4 style="text-align: left; margin-top: 0; margin-bottom: 1cm; ">PAI005 Hồ Hồng Trường</h4>
+            </div>
+        </div>
+        <h1>Welcome to the Image Processing App</h1>
+        <div class="app-links">
+            <div class="link-div">
+                <a href="/style_images">Style Images</a>
+            </div>
+            <div class="link-div">
+                <a href="/text_to_images">Text to Images</a>
+            </div>
+            <div class="link-div">
+                <a href="/image_to_image">Image to Image</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

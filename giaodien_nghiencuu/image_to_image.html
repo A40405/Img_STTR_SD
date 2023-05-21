@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Images to Images</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: orange;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type="file"],
+        .form-container input[type="text"] {
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 300px;
+        }
+
+        .form-container .form-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .form-container .form-row label {
+            flex-basis: 100px;
+        }
+
+        .form-container input[type="submit"] {
+            padding: 10px 20px;
+        }
+
+        .link-div {
+            background-color: rgb(242, 242, 15);
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .link-div a {
+            color: #00539f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="link-div home-link">
+        <a href="/">Trang chủ</a>
+    </div>
+    <h1>Images to Images</h1>
+    <div class="form-container">
+        <form method="post" action="/image_to_image" enctype="multipart/form-data">
+            <div class="form-row">
+                <label for="images">Images:</label>
+                <input type="file" name="images" accept="image/*" multiple>
+            </div>
+
+            <div class="form-row">
+                <label for="text">Text:</label>
+                <input type="text" name="text" value="Thêm một ngôi nhà cho ảnh"><br><br>
+            </div>
+
+            <input type="submit" value="Create new Images">
+        </form>
+    </div>
+
+    {% if errors %}
+        <div class="error-message">
+            {{ errors }}
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="success-message">
+            Images created successfully!
+        </div>
+        <div class="download-link">
+            <a href="/download_images3" download>Download Images</a>
+        </div>
+    {% endif %}
+</body>
+</html>

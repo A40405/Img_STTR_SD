@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Style Images</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #FFA500;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+        }
+
+        .upload-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .upload-group label {
+            margin-right: 10px;
+            color: rgb(56, 97, 108);
+            font-weight: bold;
+        }
+
+        .upload-group input[type="file"] {
+            margin-right: 10px;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .download-link {
+            margin-bottom: 20px;
+        }
+        .link-div {
+            background-color: rgb(242, 242, 15);
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+        }
+        .link-div a {
+            color: #00539f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+        }
+
+        .upload-group:nth-child(n+2) {
+            margin-left: 23px;
+        }
+    </style>
+</head>
+<body>
+    <div class="link-div home-link">
+        <a href="/">Trang chủ</a>
+    </div>
+    <h1>Style Images</h1>
+    <form method="post" action="/style_images" enctype="multipart/form-data">
+        <div id="content_images">
+            <div class="upload-group">
+                <label for="content_image_1">Content Image 1:</label>
+                <input type="file" name="content_images" id="content_image_1" accept="image/*">
+            </div>
+        </div>
+        
+        <button type="button" onclick="addContentImage()">Add Content Image</button><br><br>
+
+        <div id="style_images">
+            <div class="upload-group">
+                <label for="style_image_1">Style Image 1:</label>
+                <input type="file" name="style_images" id="style_image_1" accept="image/*">
+            </div>
+        </div>
+
+        <button type="button" onclick="addStyleImage()">Add Style Image</button><br><br>
+
+        <input type="submit" value="Create new Images" style="margin-bottom: 2cm;">
+    </form>
+
+    {% if errors %}
+        <div class="error-message">
+            {{ errors }}
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="success-message">
+            Images created successfully!
+        </div>
+        <div class="download-link">
+            <a href="/download_images1" download>Download Images</a>
+        </div>
+    {% endif %}
+
+    <script>
+        let contentImageCounter = 1;
+        let styleImageCounter = 1;
+
+        function removeContentImage(id) {
+            const element = document.getElementById(id);
+            element.remove();
+            contentImageCounter--;
+        }
+
+        function removeStyleImage(id) {
+            const element = document.getElementById(id);
+            element.remove();
+            styleImageCounter--;
+        }
+
+        function addContentImage() {
+            if (contentImageCounter < 5) {
+                contentImageCounter++;
+                const contentImagesDiv = document.getElementById("content_images");
+                const uploadGroupDiv = document.createElement("div");
+                uploadGroupDiv.classList.add("upload-group");
+                const label = document.createElement("label");
+                label.textContent = `Content Image ${contentImageCounter}:`;
+                const input = document.createElement("input");
+                input.type = "file";
+                input.name = "content_images";
+                input.id = `content_image_${contentImageCounter}`;
+                input.accept = "image/*";
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "X";
+                removeButton.type = "button";
+                removeButton.onclick = () => removeContentImage(`upload_group_${contentImageCounter}`);
+                uploadGroupDiv.appendChild(label);
+                uploadGroupDiv.appendChild(input);
+                uploadGroupDiv.appendChild(removeButton);
+                uploadGroupDiv.id = `upload_group_${contentImageCounter}`;
+                contentImagesDiv.appendChild(uploadGroupDiv);
+            }
+        }
+
+        function addStyleImage() {
+            if (styleImageCounter < 5) {
+                styleImageCounter++;
+                const styleImagesDiv = document.getElementById("style_images");
+                const uploadGroupDiv = document.createElement("div");
+                uploadGroupDiv.classList.add("upload-group");
+                const label = document.createElement("label");
+                label.textContent = `Style Image ${styleImageCounter}:`;
+                const input = document.createElement("input");
+                input.type = "file";
+                input.name = "style_images";
+                input.id = `style_image_${styleImageCounter}`;
+                input.accept = "image/*";
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "X";
+                removeButton.type = "button";
+                removeButton.onclick = () => removeStyleImage(`upload_group_${styleImageCounter}`);
+                uploadGroupDiv.appendChild(label);
+                uploadGroupDiv.appendChild(input);
+                uploadGroupDiv.appendChild(removeButton);
+                uploadGroupDiv.id = `upload_group_${styleImageCounter}`;
+                styleImagesDiv.appendChild(uploadGroupDiv);
+            }
+        }
+    </script>
+</body>
+</html>
