@@ -83,7 +83,11 @@
                 <label for="text">Text:</label>
                 <input type="text" name="text" value="Thêm một ngôi nhà cho ảnh"><br><br>
             </div>
-
+            <div class="form-row">
+                <label for="strength">Strength:</label>
+                <input type="range" name="strength" min="0" max="1" step="0.2" value="0" oninput="updateStrengthValue(this.value)">
+                <span id="strength-value">0</span>
+            </div>
             <input type="submit" value="Create new Images">
         </form>
     </div>
@@ -101,5 +105,10 @@
             <a href="/download_images3" download>Download Images</a>
         </div>
     {% endif %}
+    <script>
+        function updateStrengthValue(value) {
+            document.getElementById("strength-value").innerText = value;
+        }
+    </script>
 </body>
 </html>

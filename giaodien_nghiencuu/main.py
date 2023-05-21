@@ -101,6 +101,8 @@ def image_to_image():
             return render_template('image_to_image.html', errors=error_message)
         
         text = request.form['text']
+        strength = float(request.form['strength'])
+        print(strength)
         # Xử lý tạo ảnh từ ảnh ở đây (chưa được triển khai)
         
         
