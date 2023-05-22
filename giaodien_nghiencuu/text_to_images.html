@@ -64,9 +64,9 @@
     <div class="form-container">
         <form method="post" action="/text_to_images">
             <label for="text">Input:</label>
-            <input type="text" name="text" placeholder="Enter text in English here"><br><br>
-
-            <input type="submit" value="Create new Images" style="margin-bottom: 2cm;">
+            <input type="text" name="text" placeholder="Enter text in English here" autocomplete="on"><br><br>
+        
+            <input type="submit" value="Create new Images" style="margin-bottom: 2cm;" >
         </form>
     </div>
     {% if errors %}
