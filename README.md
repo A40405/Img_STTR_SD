@@ -16,6 +16,6 @@ cd Img_STTR_SD
 ### 2.Run the AppMake sure to install Flask and required dependencies, then run:
 
 ```bash
-python giaodien_ngamcuu/main.py
+python giaodien_nghiencuu/main.py
 ```
 
